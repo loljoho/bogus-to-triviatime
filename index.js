@@ -33,16 +33,15 @@ lineReader.on('close', () => {
  * Converts line string into JS object
  */
 const lineToObject = (line) => {
-  // slice beginning and end of line
-  let line_str = line.slice(3).slice(0, -4);
-  // split line into array
-  let line_arr = line_str.split(' ');
-  // convert array into js object
+  // convert line string into line array
+  let line_arr = line.slice(3).slice(0, -4).split(' ');
+  // convert line array into line object
   let line_obj = {};
   for (var i = 0; i < line_arr.length; i++) {
     line_obj[USER_PROPS[i]] = line_arr[i];
-    // canonical usernames
-    if (i === 1) {
+    // look for `username_canonical`,
+    // use `username` if not found
+    if (USER_PROPS[i] === 'username_canonical') {
       if (line_arr[i] === '*') {
         line_obj[USER_PROPS[i]] = line_arr[0];
       } // end if
