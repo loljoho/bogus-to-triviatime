@@ -7,11 +7,12 @@ let outstream = new stream;
 let lineReader = readline.createInterface(instream, outstream);
 
 lineReader.on('line', (line) => {
-  if (line) {
+  // read user lines only
+  if (line.startsWith(':N:')) {
     console.log(line);
   }
 });
 
 lineReader.on('close', () => {
-  console.log('Finished.');
+  console.log('\n');
 });
