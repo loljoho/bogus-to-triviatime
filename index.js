@@ -17,11 +17,24 @@ const USER_PROPS = [
   'created_at', 'updated_at'
   ];
 
+const SQL_PROPS = [
+  'username',
+  'points_made',
+  'num_answered',
+  'day', 'month', 'year',
+  'last_updated',
+  'average_time',
+  'average_score',
+  'username_canonical',
+  'channel', 'channel_canonical'
+  ];
+
 lineReader.on('line', (line) => {
   // read user lines only
   if (line.startsWith(':N:')) {
     // log to console
-    console.log(JSON.stringify(lineToObject(line)));
+    //console.log(JSON.stringify(lineToObject(line)));
+    objectToRow(lineToObject(line));
   } // end if
 });
 
@@ -49,3 +62,25 @@ const lineToObject = (line) => {
   } // end for
   return line_obj;
 };
+
+/**
+ * Converts JS object into SQL row
+ */
+const objectToRow = (line_obj) => {
+  let line_row = '(';
+  line_row += '"' + line_obj.username + '", ';
+  line_row += line_obj.points_total + ', ';
+  line_row += line_obj.questions_total + ', ';
+  line_row += 'day, ';
+  line_row += 'month, ';
+  line_row += 'year, ';
+  line_row += line_obj.updated_at + ', ';
+  line_row += 'avg_time, ';
+  line_row += 'avg_score, ';
+  line_row += '"' + line_obj.username_canonical + '", ';
+  line_row += '"#trivia", ';
+  line_row += '"#trivia"';
+  line_row += '),';
+  console.log(line_row);
+  return line_row;
+}
