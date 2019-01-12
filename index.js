@@ -71,9 +71,11 @@ const objectToRow = (line_obj) => {
   line_row += '"' + line_obj.username + '", ';
   line_row += line_obj.points_total + ', ';
   line_row += line_obj.questions_total + ', ';
-  line_row += 'day, ';
-  line_row += 'month, ';
-  line_row += 'year, ';
+  // convert linux epoch to day, month, year
+  let epoch = new Date(parseInt(line_obj.created_at + '000', 10));
+  line_row += epoch.getDay() + ', ';
+  line_row += epoch.getMonth() + ', ';
+  line_row += epoch.getFullYear() + ', ';
   line_row += line_obj.updated_at + ', ';
   line_row += 'avg_time, ';
   line_row += 'avg_score, ';
