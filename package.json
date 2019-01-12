@@ -1,0 +1,24 @@
+{
+  "name": "bogus-to-triviatime",
+  "version": "1.0.0",
+  "description": "Script for parsing BogusTrivia users file to create SQLite statement for migration to TriviaTime",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loljoho/bogus-to-triviatime.git"
+  },
+  "keywords": [
+    "trivia",
+    "irc"
+  ],
+  "author": "Jonathan Ho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loljoho/bogus-to-triviatime/issues"
+  },
+  "homepage": "https://github.com/loljoho/bogus-to-triviatime#readme"
+}
