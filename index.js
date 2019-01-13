@@ -78,7 +78,8 @@ const objectToRow = (line_obj) => {
   line_row += epoch.getFullYear() + ', ';
   line_row += line_obj.updated_at + ', ';
   line_row += 'avg_time, ';
-  line_row += 'avg_score, ';
+  // calculate average score
+  line_row += line_obj.points_total / line_obj.questions_total + ', ';
   line_row += '"' + line_obj.username_canonical + '", ';
   line_row += '"#trivia", ';
   line_row += '"#trivia"';
